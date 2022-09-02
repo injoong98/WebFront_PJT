@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+  <link rel="stylesheet" href="main.css" />
+  <link href="/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+</head>
+<body>
+  <div class ="container">
+    <h1>SSAFIT</h1>
+    <div class ="interface">
+      <p>HOME</p>
+      <p>헬스장찾기</p>
+      <i class="bi bi-person-plus-fill"></i>
+      <i class="bi bi-box-arrow-in-right"></i>
+    </div>
+  </div>
+  <hr>
+  <div class="searchbox">
+    <input type="text", id="searchId", placeholder="운동 제목 검색">
+  </div>
+  
+  <p class = "titleName">최근 가장 많이 본 영상</p>
+  <ul id="famousList">
+    <p>*** 임시 리스트 공간 ***</p>
+  </ul>
+
+  <p class = "titleName">운동 부위 선택</p>
+
+
+  <ul id="searchList"></ul>
+  
+  
+  
+
+
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(xhttp.readyState == 4 && xhttp.status == 200){
+		jsonfunc(xhttp.responseText);
+	}
+}
+xhttp.open("GET","../data/video.json", true);
+xhttp.send();
+function jsonfunc( jsonText ) {
+  // console.log(jsonText)
+
+	let json = JSON.parse(jsonText); 
+	const ulTag = document.querySelector("#searchList")
+  ulTag.innerHTML=""
+
+	for(i=0; i<json.length; i++){
+    console.log(json[i].title)
+
+    let liTag = document.createElement("li")
+    let imgTag = document.createElement("img")
+    let spanTag = document.createElement("span")
+
+    imgTag.src= "https://img.youtube.com/vi/"+ json[i].id + "/0.jpg"
+    imgTag.width = 300
+    imgTag.height = 200
+    spanTag.innerHTML = json[i].title;
+    spanTag.setAttribute("class", "videoTitle")
+    liTag.appendChild(imgTag)
+    liTag.appendChild(spanTag)
+    ulTag.appendChild(liTag)
+	}
+}
+</script>
+
+
+
+</body>
+</html>
