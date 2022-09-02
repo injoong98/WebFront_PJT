@@ -41,7 +41,7 @@
 
 #buttons{
   margin-block-end: 2em;
-  margin-inline-start: 50px;
+  margin-inline-start: 30px;
 }
 
 
@@ -63,7 +63,7 @@ input {
 
 li {
   float: left;
-  margin-left: 20px;
+  margin-right: 40px;
 }
 
 
@@ -110,5 +110,5 @@ span {
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 15em;
-    margin-inline-end: 0px;
+    margin-inline-end: 15em;
   }

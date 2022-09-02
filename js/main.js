@@ -1,4 +1,74 @@
-wholeList()
+
+
+
+let cntListJson = localStorage.getItem("cnt");
+let cntList = JSON.parse(cntListJson)
+
+wholeList() // cntList 초기화 됨.
+
+
+//cntList 정렬해서 조회수 높은 순으로 ㅜㄹ력하는 반복문?
+
+
+function popularList() {
+
+  let xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function () {
+    if(xhttp.readyState == 4 && xhttp.status == 200){
+      jsonfunc(xhttp.responseText);
+    }
+  }
+  xhttp.open("GET","../data/video.json", true);
+  xhttp.send();
+  function jsonfunc( jsonText ) {
+    // console.log(jsonText)
+
+    let json = JSON.parse(jsonText); 
+    const ulTag = document.querySelector("#popularList")
+    ulTag.innerHTML=""
+    let idx = 0;
+    while(idx<4){
+      for(i=0; i<json.length; i++){
+        if(json[i].id === cntList[idx][0]){
+          let liTag = document.createElement("li")
+          let imgTag = document.createElement("img")
+          let spanTag = document.createElement("span")
+          let id = json[i].id
+          imgTag.src= "https://img.youtube.com/vi/"+ id + "/0.jpg"
+          imgTag.onclick = () => {
+            for(let j = 0; j<json.length; j++){
+              if(cntList[j][0]===id){
+                cntList[j][1]++;
+              }
+            }
+            let tmpListJson = JSON.stringify(cntList);
+            localStorage.setItem("cnt", tmpListJson);
+            location.href="./reviewList.html?postId="+id;
+          }
+          imgTag.width = 300
+          imgTag.height = 200
+          spanTag.innerHTML = "("+(idx+1)+"위) "+json[i].title;
+          spanTag.setAttribute("class", "videoTitle")
+          liTag.appendChild(imgTag)
+          liTag.appendChild(spanTag)
+          ulTag.appendChild(liTag)
+          
+          break;
+        } // if
+      } //for
+      idx++;
+    } //while
+  }
+
+}
+
+
+
+//
+
+
+
 // 모든 리스트 반환
 function wholeList() {
 
@@ -17,18 +87,20 @@ function wholeList() {
     let json = JSON.parse(jsonText); 
     const ulTag = document.querySelector("#searchList")
     ulTag.innerHTML=""
+    let num = 0;
+    if(!cntList){
+      cntList = new Array(json.length);
+      num = 1;
+    }
+    
 
     for(i=0; i<json.length; i++){
-      console.log(json[i].title)
-
       let liTag = document.createElement("li")
       let imgTag = document.createElement("img")
       let spanTag = document.createElement("span")
       let id = json[i].id
       imgTag.src= "https://img.youtube.com/vi/"+ id + "/0.jpg"
-      imgTag.onclick = () => {
-        location.href="./reviewList.html?postId="+id;
-      }
+      
       imgTag.width = 300
       imgTag.height = 200
       spanTag.innerHTML = json[i].title;
@@ -36,7 +108,27 @@ function wholeList() {
       liTag.appendChild(imgTag)
       liTag.appendChild(spanTag)
       ulTag.appendChild(liTag)
+
+      if(num===1){
+        cntList[i] = new Array(2);
+        cntList[i][0] = id;
+        cntList[i][1] = 0;
+      }
+
+      imgTag.onclick = () => {
+        for(let j = 0; j<json.length; j++){
+          if(cntList[j][0]===id){
+            cntList[j][1]++;
+          }
+        }
+        let tmpListJson = JSON.stringify(cntList);
+        localStorage.setItem("cnt", tmpListJson);
+        location.href="./reviewList.html?postId="+id;
+      }
     }
+    console.log(cntList);
+    cntList.sort((arr1, arr2) => arr2[1]-arr1[1]);
+    popularList();
   }
 
 }
@@ -129,6 +221,13 @@ function btnFilter (part){
         let id = json[i].id
         imgTag.src= "https://img.youtube.com/vi/"+ id + "/0.jpg"
         imgTag.onclick = () => {
+          for(let j = 0; j<json.length; j++){
+            if(cntList[j][0]===id){
+              cntList[j][1]++;
+            }
+          }
+          let tmpListJson = JSON.stringify(cntList);
+          localStorage.setItem("cnt", tmpListJson);
           location.href="./reviewList.html?postId="+id;
         }
         imgTag.width = 300
