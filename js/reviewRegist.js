@@ -21,6 +21,10 @@ const reviewRegistBtnClicked = () => {
   }
 
   registReview(reviewObject);
+
+  titleInputTag.value = "";
+  contentInputTag.value = "";
+
   window.onload();
 }
 
