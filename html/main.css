@@ -22,7 +22,10 @@ h1{
 }
 
 
-
+#buttons{
+  margin-block-end: 2em;
+  margin-inline-start: 50px;
+}
 
 nav {
   display: inline-block;
@@ -50,7 +53,6 @@ li {
 
 
 span {
- 
   display: block; 
   font-size: 20px;
   white-space: nowrap;
@@ -58,5 +60,23 @@ span {
   text-overflow: ellipsis;
   width: 300px;
   height: 40px;
+}
 
+.part-btn-off{
+  background-color: lightcyan;
+  border-radius: 15%;
+  width: 90px;
+  height: 50px;
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.part-btn-on{
+  background-color: yellow;
+  font-weight: bold;
+  border-radius: 15%;
+  width: 90px;
+  height: 50px;
+  font-size: 25px;
+  margin-right: 5px;
 }

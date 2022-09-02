@@ -30,8 +30,12 @@
   </ul>
 
   <p class = "titleName">운동 부위 선택</p>
-
-
+  <div id="buttons">
+    <button class="part-btn-off", id="btn-whole">전신</button>
+    <button class="part-btn-off", id="btn-upper">상체</button>
+    <button class="part-btn-off", id="btn-lower">하체</button>
+    <button class="part-btn-off", id="btn-stomach">복부</button>
+  </div>
   <ul id="searchList"></ul>
   
   
@@ -39,42 +43,8 @@
 
 
 
-<script type="text/javascript">
+<script src="main.js"></script>
 
-let xhttp = new XMLHttpRequest();
-
-xhttp.onreadystatechange = function () {
-	if(xhttp.readyState == 4 && xhttp.status == 200){
-		jsonfunc(xhttp.responseText);
-	}
-}
-xhttp.open("GET","../data/video.json", true);
-xhttp.send();
-function jsonfunc( jsonText ) {
-  // console.log(jsonText)
-
-	let json = JSON.parse(jsonText); 
-	const ulTag = document.querySelector("#searchList")
-  ulTag.innerHTML=""
-
-	for(i=0; i<json.length; i++){
-    console.log(json[i].title)
-
-    let liTag = document.createElement("li")
-    let imgTag = document.createElement("img")
-    let spanTag = document.createElement("span")
-
-    imgTag.src= "https://img.youtube.com/vi/"+ json[i].id + "/0.jpg"
-    imgTag.width = 300
-    imgTag.height = 200
-    spanTag.innerHTML = json[i].title;
-    spanTag.setAttribute("class", "videoTitle")
-    liTag.appendChild(imgTag)
-    liTag.appendChild(spanTag)
-    ulTag.appendChild(liTag)
-	}
-}
-</script>
 
 
 
