@@ -1,3 +1,4 @@
+const iframeTag = document.querySelector('iframe');
 const tbodyTag = document.querySelector('tbody');
 const reviewListTag = document.querySelector('#review-list');
 const registModalTag = document.querySelector('#review-regist-modal');
@@ -20,6 +21,9 @@ window.onload = () => {
 }
 
 const loadReviewList = () => {
+  
+  iframeTag.setAttribute("src","https://www.youtube.com/embed/"+postId);
+
   tbodyTag.innerHTML = "";
 
   let reviewListJson = localStorage.getItem("review");
