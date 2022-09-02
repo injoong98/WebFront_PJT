@@ -6,67 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>리뷰 상세</title>
   <link href="/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/bootstrap-5.1.3-examples/modals/modals.css" rel="stylesheet">
 </head>
 <body>
-  
-  <section class="py-5 text-center container">
-    <div class="row justify-content-center">
-      <div class="">
-        <h4>운동영상 리뷰</h4>
+  <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-5 shadow col-12">
+        
+        <section class="py-5 text-center container">
+
+          
+          <div class="row justify-content-center">
+            <div class="">
+              <h4>운동영상 리뷰</h4>
+            </div>
+          </div>
+          <hr>
+          
+          <form class="">
+            <div class="d-flex justify-content-between px-1">
+              <button class="mb-2 btn btn-sm rounded-4 btn-outline-secondary me-1" type="submit">목록으로</button>
+            </div>
+          </form>
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title fs-5">와~ 효과만점 운동 영상입니다</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li style="font-size: 12px;">작성자 : Edward</li>
+                <li style="font-size: 12px;">작성일 : 2022-09-02 11:31:22</li>
+                <li style="font-size: 12px;">조회수 : 1</li>
+                <hr>
+                <li>강추 강추!</li>
+              </ul>
+              <div class="d-flex justify-content-evenly">
+                <button class="w-30 mb-2 btn btn-md rounded-4 btn-outline-primary me-2" type="submit">글수정</button>
+                <button class="w-30 mb-2 btn btn-md btn-outline-danger rounded-4" type="submit">글삭제</button>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+
       </div>
     </div>
-    <hr>
-    <div class="row py-lg-5 justify-content-center">
-      <div class="">
-        <iframe width="600" height="400" src="https://www.youtube.com/embed/0NwCKCmf0Qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
-      </div>
-    </div>
-    <hr>
-    
-    <form class="">
-      <div class="d-flex justify-content-between px-1">
-        <button class="mb-2 btn btn-sm rounded-4 btn-primary me-1" type="submit">글작성</button>
-        <input type="search" class="form-control w-50 mb-2" style="max-width: 300px;" placeholder="제목, 내용으로 검색" aria-label="Search">
-        <!-- <button class="w-25 mb-2 btn btn-md btn-danger rounded-4" type="submit">취소</button> -->
-      </div>
-    </form>
-    <div class="bd-example">
-      <table class="table table-borderless" style="font-size: 14px;">
-        <thead class="table-dark">
-        <tr>
-          <th scope="col">번호</th>
-          <th scope="col" class="col-sm-6">제목</th>
-          <th scope="col">작성자</th>
-          <th scope="col">조회수</th>
-          <th scope="col">작성시간</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  </div>
   <script src="/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
